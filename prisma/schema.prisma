@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model BlogPost {
+  id                    Int          @id @default(autoincrement())
+  topic                 String
+  writingStyle          String
+  audience              String
+  formality             String
+  length                String
+  additionalInstructions String?
+  prompt                String
+  generatedContent      String
+  promptVersion        String
+  createdAt             DateTime     @default(now())
+  feedback              Feedback?
+  testResults           TestResult[]
+}
+
+model Feedback {
+  id         Int      @id @default(autoincrement())
+  blogPostId Int      @unique
+  blogPost   BlogPost @relation(fields: [blogPostId], references: [id])
+  rating     Int
+  comment    String?
+  createdAt  DateTime @default(now())
+}
+
+model TestResult {
+  id               Int      @id @default(autoincrement())
+  blogPostId       Int      
+  blogPost         BlogPost @relation(fields: [blogPostId], references: [id])
+  score            Float
+  readabilityScore Float
+  sentiment        String
+  keywordDensity   String
+  grammarErrors    String  // Changed from String[] to String
+  feedback         String  // Changed from String[] to String
+  suggestions      String  // Changed from String[] to String
+  createdAt        DateTime @default(now())
+}
+

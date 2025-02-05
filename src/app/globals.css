@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #604cff;
+  --background-color: #330000;
+  --text-color: #ffffff;
+}
+
+body {
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+.content-container {
+  height: 100vh;
+  width: 100vw;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.prose {
+  color: var(--text-color);
+}
+
+.prose strong {
+  color: var(--primary-color);
+}
+
+.prose a {
+  color: var(--primary-color);
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+  color: var(--primary-color);
+}
+
+.prose code {
+  color: var(--primary-color);
+  background-color: rgba(96, 76, 255, 0.1);
+}
+
+.prose pre {
+  background-color: rgba(96, 76, 255, 0.1);
+}
+
+.prose blockquote {
+  color: var(--text-color);
+  border-left-color: var(--primary-color);
+}
+
+.prose ul > li::before {
+  background-color: var(--primary-color);
+}
+
+.prose ol > li::before {
+  color: var(--primary-color);
+}
+
+html,
+body,
+#__next {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Add these new styles for better text contrast */
+.text-contrast {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.bg-contrast {
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+}
+
+.blog-post-container {
+  margin-top: 50rem;
+}
